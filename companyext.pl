@@ -79,7 +79,7 @@ subordinate(X,Y) :- superior(Y,X).
 
 query_1(EmployeeName):-
     female(EmployeeName),
-    works_on(_, 'computerization', 10), 
+    works_on(EmployeeName, 'computerization', 10),
     supervise('jennifer', EmployeeName).
 
 query_2(EmployeeName):-
