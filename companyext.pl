@@ -77,29 +77,27 @@ subordinate(X,Y) :- superior(Y,X).
 
 % Should you need to write new rules, please enter them here.
 
-employee_woman(EmployeeName):-
+query_1(EmployeeName):-
     female(EmployeeName),
     works_on(_, 'computerization', 10), 
-    employee(EmployeeName),
     supervise('jennifer', EmployeeName).
 
-rich_employee(EmployeeName):-
+query_2(EmployeeName):-
     employee(EmployeeName),
     salary(EmployeeName, Salary),
     Salary > 40000,
     department(EmployeeName,'research').
-
 
 supreme_chief_candidate(EmployeeName):-
     employee(EmployeeName),
     not(supervise(_,EmployeeName)),
     supervise(EmployeeName, _).
 
-chief(EmployeeName):-
+query_3(EmployeeName):-
     setof(EmployeeName, supreme_chief_candidate(EmployeeName), Chiefs),
     member(EmployeeName, Chiefs).
 
-productx_employee(EmployeeName):-
+query_4(EmployeeName):-
     employee(EmployeeName),
     works_on(EmployeeName, 'productx', Effort),
     Effort >= 20.
@@ -108,9 +106,9 @@ productx_employee(EmployeeName):-
 % Queries
 % Write your queries here .
 
-% Query 1 would be executed with the following:  ?-employee_woman(EmployeeName).
-% Query 2 would be execuited with the following: ?-rich_employee(EmployeeName).
-% Query 3 would be execuited with the following: ?-chief(EmployeeName).
-% Query 4 would be execuited with the following: ?-productx_employee(EmployeeName).
+% Query 1 would be executed with the following:  ?-query_1(EmployeeName).
+% Query 2 would be execuited with the following: ?-query_2(EmployeeName).
+% Query 3 would be execuited with the following: ?-query_3(EmployeeName).
+% Query 4 would be execuited with the following: ?-query_4(EmployeeName).
 
 
